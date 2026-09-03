@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Antic Slab', serif;
+    }
+
+    #gameCanvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #score {
+      text-align: center;
+      font-size: 140px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="score">0</div>
+  <canvas id="gameCanvas" width="350" height="350"></canvas>
+
+  <script>
+    //Configuration
+    const GAME_SPEED_MS = 100;
+    const GRID_SIZE = 10;
+    const POINTS_PER_FOOD = 1;
+
+    const CANVAS_BORDER_COLOR = "black";
+    const CANVAS_BACKGROUND_COLOR = "white";
+    const SNAKE_COLOR = "lightgreen";
+    const SNAKE_BORDER_COLOR = "darkgreen";
+    const FOOD_COLOR = "red";
+    const FOOD_BORDER_COLOR = "darkred";
+
+    const INITIAL_SNAKE = [
+      { x: 150, y: 150 },
+      { x: 140, y: 150 },
+      { x: 130, y: 150 },
+      { x: 120, y: 150 },
+      { x: 110, y: 150 }
+    ];
+
+
+    const gameCanvas = document.getElementById("gameCanvas");
+    const drawingContext = gameCanvas.getContext("2d");
+    const scoreElement = document.getElementById("score");
+
+    let snake = INITIAL_SNAKE.map(segment => ({ ...segment }));
+    let score = 0;
+    let foodX;
+    let foodY;
+    let velocityX = GRID_SIZE;
+    let velocityY = 0;
+    let dirChange = false;
+
+    initializeGame();
+
+    function initializeGame() {
+      createFood();
+      document.addEventListener("keydown", handleDirectionInput);
+      startGameLoop();
+    }
+
+    function startGameLoop() {
+      setTimeout(gameTick, GAME_SPEED_MS);
+    }
+
+    function gameTick() {
+      dirChange = false;
+
+      clearCanvas();
+      moveSnake();
+
+      if (hasGameEnded()) {
+        return;
+      }
+
+      drawFood();
+      drawSnake();
+
+      startGameLoop();
+    }
+
+    function clearCanvas() {
+      drawingContext.fillStyle = CANVAS_BACKGROUND_COLOR;
+      drawingContext.strokeStyle = CANVAS_BORDER_COLOR;
+      drawingContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      drawingContext.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+    }
+
+    function drawSnake() {
+      snake.forEach(drawSnakeSegment);
+    }
+
+    function drawSnakeSegment(snakeSegment) {
+      drawingContext.fillStyle = SNAKE_COLOR;
+      drawingContext.strokeStyle = SNAKE_BORDER_COLOR;
+      drawingContext.fillRect(
+        snakeSegment.x, snakeSegment.y, GRID_SIZE, GRID_SIZE
+      );
+      drawingContext.strokeRect(
+        snakeSegment.x, snakeSegment.y, GRID_SIZE, GRID_SIZE
+      );
+    }
+
+    function drawFood() {
+      drawingContext.fillStyle = FOOD_COLOR;
+      drawingContext.strokeStyle = FOOD_BORDER_COLOR;
+      drawingContext.fillRect(foodX, foodY, GRID_SIZE, GRID_SIZE);
+      drawingContext.strokeRect(foodX, foodY, GRID_SIZE, GRID_SIZE);
+    }
+
+    // function moveSnake() {
+    //   const newHead = {
+    //     x: snake[0].x + velocityX,
+    //     y: snake[0].y + velocityY
+    //   };
+
+    //   snake.unshift(newHead);
+
+    //   if (hasSnakeEatenFood()) {
+    //     increaseScore();
+    //     createFood();
+    //   } else {
+    //     removeSnakeTail();
+    //   }
+    // }
+
+
+    function moveSnake() {
+      let newX = snake[0].x + velocityX;
+      let newY = snake[0].y + velocityY;
+
+      if (newX < 0) {
+        newX = gameCanvas.width - GRID_SIZE;
+      } else if (newX >= gameCanvas.width) {
+        newX = 0;
+      }
+
+      if (newY < 0) {
+        newY = gameCanvas.height - GRID_SIZE;
+      } else if (newY >= gameCanvas.height) {
+        newY = 0;
+      }
+
+      const newHead = { x: newX, y: newY };
+
+      snake.unshift(newHead);
+
+      if (hasSnakeEatenFood()) {
+        increaseScore();
+        createFood();
+      } else {
+        removeSnakeTail();
+      }
+    }
+
+
+    function removeSnakeTail() {
+      snake.pop();
+    }
+
+    function hasSnakeEatenFood() {
+      return snake[0].x === foodX && snake[0].y === foodY;
+    }
+
+    function increaseScore() {
+      score += POINTS_PER_FOOD;
+      scoreElement.textContent = score;
+    }
+
+    function createFood() {
+      let newFoodX;
+      let newFoodY;
+
+      do {
+        newFoodX = getRandomGridCoordinate(
+          0, gameCanvas.width - GRID_SIZE
+        );
+        newFoodY = getRandomGridCoordinate(
+          0, gameCanvas.height - GRID_SIZE
+        );
+      } while (isFoodOnSnake(newFoodX, newFoodY));
+
+      foodX = newFoodX;
+      foodY = newFoodY;
+    }
+
+    function isFoodOnSnake(x, y) {
+      return snake.some(
+        snakeSegment =>
+          snakeSegment.x === x && snakeSegment.y === y
+      );
+    }
+
+    function getRandomGridCoordinate(min, max) {
+      return Math.round(
+        (Math.random() * (max - min) + min) / GRID_SIZE
+      ) * GRID_SIZE;
+    }
+
+
+    function hasGameEnded() {
+      return hasSnakeHitWall() || hasSnakeHitItself();
+    }
+
+    function hasSnakeHitWall() {
+      const head = snake[0];
+
+      const hitLeftWall = head.x < 0;
+      const hitRightWall = head.x > gameCanvas.width - GRID_SIZE;
+      const hitTopWall = head.y < 0;
+      const hitBottomWall = head.y > gameCanvas.height - GRID_SIZE;
+
+      return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
+    }
+
+    function hasSnakeHitItself() {
+      const head = snake[0];
+
+      for (let index = 4; index < snake.length; index++) {
+        const bodySegment = snake[index];
+
+        if (bodySegment.x === head.x && bodySegment.y === head.y) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+
+    function handleDirectionInput(event) {
+      if (dirChange) {
+        return;
+      }
+
+      const pressedKey = event.key;
+
+      const movingUp = velocityY === -GRID_SIZE;
+      const movingDown = velocityY === GRID_SIZE;
+      const movingRight = velocityX === GRID_SIZE;
+      const movingLeft = velocityX === -GRID_SIZE;
+
+      if (pressedKey === "ArrowLeft" && !movingRight) {
+        velocityX = -GRID_SIZE;
+        velocityY = 0;
+        dirChange = true;
+        return;
+      }
+
+      if (pressedKey === "ArrowUp" && !movingDown) {
+        velocityX = 0;
+        velocityY = -GRID_SIZE;
+        dirChange = true;
+        return;
+      }
+
+      if (pressedKey === "ArrowRight" && !movingLeft) {
+        velocityX = GRID_SIZE;
+        velocityY = 0;
+        dirChange = true;
+        return;
+      }
+
+      if (pressedKey === "ArrowDown" && !movingUp) {
+        velocityX = 0;
+        velocityY = GRID_SIZE;
+        dirChange = true;
+      }
+    }
+  </script>
+</body>
+
+</html>

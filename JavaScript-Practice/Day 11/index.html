@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Grocery Checkout</h1>
+  <section id="form">
+
+    <label>Customer Name:</label>
+    <input id="name" type="text">
+
+    <h3>Order</h3>
+
+    <input id="product" type="text" placeholder="Product Name">
+    <input id="price" type="text" placeholder="Price">
+    <input id="quantity" type="text" placeholder="Quantity">
+
+    <button id="add">Add</button>
+
+    <h3>Orders</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="orderTable"></tbody>
+    </table>
+
+    <br>
+
+    <label>VAT:</label>
+    <select id="vat">
+      <option value="0">0%</option>
+      <option value="5">5%</option>
+      <option value="10">10%</option>
+      <option value="15">15%</option>
+    </select>
+
+    <button id="save">Save</button>
+    <button id="show" disabled>Print</button>
+
+    <p id="message"></p>
+
+  </section>
+
+  <section id="invoice" hidden></section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "day-20",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest",
+    "test2": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^10.9.1",
+    "jest": "^30.5.1",
+    "prettier": "^3.9.6"
+  }
+}

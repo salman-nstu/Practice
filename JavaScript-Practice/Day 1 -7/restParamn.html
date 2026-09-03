@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Use Cases</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        // Configuration function with defaults
+        function createUser(name, role = "user", ...permissions) {
+            return {
+                name,
+                role,
+                permissions: permissions.length ? permissions : ["read"]
+            };
+        }
+
+        const user1 = createUser("John");
+        const user2 = createUser("Admin", "admin", "create", "update", "delete");
+
+        document.getElementById("demo").innerHTML =
+            JSON.stringify(user1, null, 2) + "<br><br>" +
+            JSON.stringify(user2, null, 2);
+    </script>
+</body>
+
+</html>
