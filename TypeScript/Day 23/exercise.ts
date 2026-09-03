@@ -1,3 +1,5 @@
+export { };
+
 const username: string = "Salman";
 const age: number = 25;
 const isStudent: boolean = true;
