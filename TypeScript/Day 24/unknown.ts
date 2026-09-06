@@ -4,7 +4,7 @@ if (typeof value === "string") {
     console.log(value.toUpperCase());
 }
 
-function printValue(value: unknown): void {
+function printValue(value: any): void {
     if (typeof value === "string") {
         console.log(value.toUpperCase());
     }

@@ -19,4 +19,8 @@ console.log(num[3].toString());
 // let username: string = "Salman";
 
 // console.log(username.toUpperCase());
-// // console.log(username.toFixed()); 
+// // console.log(username.toFixed());
+
+function add(a, a) {
+    return a
+}
