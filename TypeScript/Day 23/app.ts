@@ -14,7 +14,7 @@ if (isLoggedIn) {
 
 let num: number[] = [10, 20, 30];
 
-console.log(num);
+console.log(num[3].toString());
 
 // let username: string = "Salman";
 
