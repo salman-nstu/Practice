@@ -1,6 +1,6 @@
-function add(a: number, b: number): number {
+function add2(a: number, b: number): number {
     return a + b;
 }
 
-console.log(add(3, 3));
+console.log(add2(3, 3));
 

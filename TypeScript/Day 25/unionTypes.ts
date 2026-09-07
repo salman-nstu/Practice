@@ -1,0 +1,2 @@
+let numorstring: (number | string);
+
