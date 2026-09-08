@@ -1,11 +1,11 @@
 interface User {
-    id: number;
+    id: (number | string);
     name: string;
     email: string;
 }
 
 const user: User = {
-    id: 1,
+    id: 88,
     name: "Salman",
     email: "salman@example.com"
 };
@@ -16,3 +16,8 @@ console.log(user);
 //     name: "SK",
 
 // }
+
+
+let array: (number | string)[];
+
+array = ['2', 3] 
