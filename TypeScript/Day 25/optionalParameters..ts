@@ -6,7 +6,7 @@ function greetUser(name: string, age?: number): string {
     return `Hello ${name}.`;
 }
 console.log(greetUser("SK", 33));
-console.log(greetUser("SK", undefined));
+console.log(greetUser("SK"));
 
 // function createAccount(
 //     age?: number,
@@ -14,10 +14,10 @@ console.log(greetUser("SK", undefined));
 // ) { }
 
 function example(
-    a: number = 10,
-    b: number
+    a: number,
+    b?: number
 ) {
-    return a + b;
+    return b;
 }
 
-console.log(example(undefined, 10));
+console.log(example(10));
