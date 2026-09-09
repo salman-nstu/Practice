@@ -4,6 +4,7 @@ function formatValue(value: number): string;
 function formatValue(value: string | number): string {
     if (typeof value === "string") {
         return value.toUpperCase();
+        // return 7;
     }
 
     return value.toString();
@@ -14,6 +15,7 @@ console.log(formatValue("Hello"));
 let digit: number | string[];
 
 // digit = [2 ];
+
 
 
 function process(value: string): string;
