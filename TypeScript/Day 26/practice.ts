@@ -20,3 +20,5 @@ bkash.pay(300);
 
 const nagad = new Nagad();
 nagad.pay(100);
+
+console.log(typeof nagad.pay);

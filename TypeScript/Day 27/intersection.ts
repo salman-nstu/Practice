@@ -16,3 +16,10 @@ const user: UserRecord = {
     createdAt: new Date(),
     updatedAt: new Date()
 };
+
+
+type A = number;
+type B = string;
+type C = A & Timestamp;
+
+const ca: C = 

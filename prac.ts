@@ -14,3 +14,12 @@ function add(a: number | string) {
 
 console.log(add(5));
 
+interface A {
+    name: number;
+    age(): number
+}
+interface A {
+    name: number;
+    age(): string
+}
+

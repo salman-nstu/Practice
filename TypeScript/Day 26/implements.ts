@@ -15,4 +15,6 @@ class Dog implements Animal {
 }
 
 const dog = new Dog("KK");
+console.log(dog.name);
+
 dog.move();
