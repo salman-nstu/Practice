@@ -20,4 +20,7 @@ const account = new BankAccount(5000);
 
 account.deposit(1000);
 
+
+console.log(account);
+
 console.log(account.getBalance()); 

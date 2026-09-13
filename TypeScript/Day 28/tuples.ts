@@ -1,10 +1,10 @@
-let user: [string, number];
+let kkkk: [string, number];
 
-user = ["Salman", 22];
+kkkk = ["Salman", 22];
 
-type User = [
-    name: string,
-    age: number,
-    isActive: boolean
-];
+// type User = [
+//     name: string,
+//     age: number,
+//     isActive: boolean
+// ];
 
