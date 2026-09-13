@@ -1,4 +1,4 @@
-class Employee {
+class Employee1 {
     constructor(
         public readonly id: number,
         public name: string,
@@ -16,7 +16,7 @@ class Employee {
         }
     }
 }
-const employee = new Employee(
+const employee = new Employee1(
     101,
     "Salman",
     "Engineering",
