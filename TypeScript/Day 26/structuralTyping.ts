@@ -3,14 +3,19 @@ interface Point {
     y: number;
 };
 
-const location = {
+const locationnn = {
     x: 10,
-    y: 20
+    y: 20,
+    z: 10
 };
 
 function printPoint(point: Point): void {
     console.log(point.x, point.y);
 }
 
-printPoint(location);
+printPoint({
+    x: 10,
+    y: 20,
+    z: 10
+});
 

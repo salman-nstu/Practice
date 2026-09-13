@@ -1,4 +1,4 @@
-class User {
+class Usera {
     readonly id: number;
     name: string;
 
@@ -8,10 +8,10 @@ class User {
         // Object.freeze(this);
     }
 }
-const userrr = new User(101, "Salman");
+const userrr = new Usera(101, "Salman");
 
 userrr.name = "Ahmed";
 
-userrr.id = 200;
+userrr.id = 20011;
 
 console.log(userrr);
