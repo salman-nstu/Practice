@@ -4,12 +4,7 @@ interface Shape {
 }
 
 abstract class AbstractShape implements Shape {
-    abstract
-    static totalShapes = 0;
-
-    constructor(public name: string) {
-        AbstractShape.totalShapes++;
-    }
+    constructor(public name: string) { }
 
     abstract area(): number;
     abstract perimeter(): number;
@@ -20,7 +15,9 @@ abstract class AbstractShape implements Shape {
 }
 
 class Circle extends AbstractShape {
-    constructor(public radius: number) {
+    constructor(
+        public radius: number
+    ) {
         super("circle");
     }
 
@@ -30,10 +27,6 @@ class Circle extends AbstractShape {
 
     perimeter(): number {
         return 2 * Math.PI * this.radius;
-    }
-
-    static create(radius: number): Circle {
-        return new Circle(radius);
     }
 }
 
@@ -54,15 +47,15 @@ class Rectangle extends AbstractShape {
     }
 }
 
-const circle = Circle.create(5);
-const rectangle = new Rectangle(10, 5);
+const circle = new Circle(5);
 
 console.log(circle.describe());
 console.log(circle.area());
 console.log(circle.perimeter());
 
+
+const rectangle = new Rectangle(10, 5);
+
 console.log(rectangle.describe());
 console.log(rectangle.area());
 console.log(rectangle.perimeter());
-
-console.log(`Total shapes: ${AbstractShape.totalShapes}`);
