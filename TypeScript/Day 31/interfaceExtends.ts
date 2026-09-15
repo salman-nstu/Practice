@@ -13,6 +13,6 @@ const user5 = {
 
 printId(user5);
 
-printId({
-    name: "Salman"
-});
+// printId({
+//     name: "Salman"
+// });
