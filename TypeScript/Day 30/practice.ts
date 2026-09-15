@@ -4,7 +4,6 @@ interface Shape {
 }
 
 abstract class AbstractShape implements Shape {
-    abstract
     static totalShapes = 0;
 
     constructor(public name: string) {
