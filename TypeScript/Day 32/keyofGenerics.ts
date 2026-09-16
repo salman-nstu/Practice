@@ -1,17 +1,23 @@
-function getProperty<T, K extends keyof T>(
-    obj: T,
-    key: K
-): T[K] {
+function getProperty1(
+    obj: User22,
+    key: string
+) {
     return obj[key];
 }
 
-const user6 = {
-    name3: "Salman",
+const user6: User22 = {
+    name: "Salman",
     age: 22,
     isAdmin: false
 };
 
-const namew = getProperty(user6, "name3");
+interface User22 {
+    name: string,
+    age: number,
+    isAdmin: boolean
+};
+
+const namew = getProperty(user6, "name");
 
 console.log(namew);
 
@@ -19,6 +25,7 @@ const adminn = getProperty(user6, "isAdmin");
 
 console.log(adminn);
 
+console.log(getProperty1(user6, "ID"));
 
 
 

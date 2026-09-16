@@ -15,3 +15,4 @@ function printkey(key: UserKeys) {
 }
 
 printkey("age")
+printkey("ID")

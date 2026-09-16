@@ -14,6 +14,8 @@ const useraa: Useraa = {
     isActive: true
 };
 
+type CC = keyof Useraa;
+
 function getProperty<T, K extends keyof T>(
     obj: T,
     key: K
