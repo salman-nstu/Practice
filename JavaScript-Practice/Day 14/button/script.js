@@ -21,11 +21,11 @@ addBtn.addEventListener('click', () => {
     itemInput.focus();
 });
 
-// itemInput.addEventListener('keypress', (event) => {
-//     if (event.key === 'Enter') {
-//         addBtn.click();
-//     }
-// });
+itemInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        addBtn.click();
+    }
+});
 
 
 itemList.addEventListener('click', (event) => {
