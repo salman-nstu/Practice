@@ -9,3 +9,7 @@ type User = {
 
 type RequiredUser = MyRequired<User>;
 
+const III: RequiredUser = {
+    id: 44,
+}
+

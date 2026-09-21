@@ -7,7 +7,7 @@ type Usern = {
 
 type SafeUser = Omit<User, "password">;
 
-type MyOmit<T, K extends keyof T> = {
-    [P in Exclude<keyof T, K>]: T[P];
-};
+// type MyOmit<T, K extends keyof T> = {
+//     [P in Exclude<keyof T, K>]: T[P];
+// };
 

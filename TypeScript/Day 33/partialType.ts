@@ -14,13 +14,15 @@ const update: UserUpdate = {
     name: "Salman"
 };
 
-function updateUser(
-    id: number,
-    changes: Partial<User>
-) {
 
-}
 
-updateUser(10, {
-    name: "Rahim"
-});
+// function updateUser(
+//     id: number,
+//     changes: Partial<User>
+// ) {
+
+// }
+
+// updateUser(10, {
+//     name: "Rahim"
+// });
