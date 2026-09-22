@@ -12,16 +12,51 @@
 
 <body>
 
-    <header class="page-header">
-        <h1>Products</h1>
 
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search products...">
-        </div>
-    </header>
-    <div id="product-container"></div>
 
-    <div id="pagination"></div>
+    <nav class="navbar">
+        <button id="home-nav">Home</button>
+        <button id="cart-nav">Cart <span id="nav-cart-count">0</span></button>
+        <!-- <button id="search-nav">Search</button> -->
+    </nav>
+
+
+
+    <div id="product-list-view">
+
+        <header class="page-header">
+            <h1>Products</h1>
+
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search products...">
+            </div>
+        </header>
+
+        <div id="product-container"></div>
+
+        <div id="pagination"></div>
+
+    </div>
+
+
+
+    <div id="product-detail-view" class="hidden">
+
+        <button id="back-btn">&larr; Back to Products</button>
+
+        <div id="product-detail-content"></div>
+
+    </div>
+
+
+    <div id="cart-view" class="hidden">
+
+        <h1>Cart</h1>
+
+        <div id="cart-container"></div>
+
+    </div>
+
 
     <script src="script.js"></script>
 </body>
