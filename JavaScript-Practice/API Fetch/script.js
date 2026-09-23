@@ -38,6 +38,12 @@ function updateCartCount() {
 // cartCount.textContent = totalQuantity;
 // navCartCount.textContent = totalQuantity;
 
+// function updateDetailsNumber() {
+
+
+
+// }
+
 
 function addToCart(product, quantity) {
 
@@ -46,8 +52,7 @@ function addToCart(product, quantity) {
     );
 
     if (existingItem) {
-
-        existingItem.quantity += quantity;
+        existingItem.quantity = quantity;
 
     } else {
 
@@ -65,7 +70,6 @@ function addToCart(product, quantity) {
 
     alert("Product added to cart.");
 }
-
 
 function removeFromCart(productId) {
 
@@ -362,7 +366,11 @@ function renderProductDetails(product) {
     //     : "";
 
     //<div class="detail-gallery">${imagesHtml}</div>
-    let quantity = 1;
+    const cartItem = cart.find(
+        item => item.id === product.id
+    );
+
+    let quantity = cartItem ? cartItem.quantity : 1;
 
 
     productDetailContent.innerHTML = `
@@ -423,7 +431,7 @@ function renderProductDetails(product) {
                     </button>
 
                     <span id="quantity-value">
-                        1
+                        ${quantity}
                     </span>
 
                     <button id="quantity-plus">
@@ -466,6 +474,14 @@ function renderProductDetails(product) {
             quantity--;
 
             quantityValue.textContent = quantity;
+            const cartItem = cart.find(
+                item => item.id === product.id
+            );
+
+            if (cartItem) {
+                cartItem.quantity = quantity;
+                updateCartCount();
+            }
 
         }
 
@@ -479,6 +495,15 @@ function renderProductDetails(product) {
             quantity++;
 
             quantityValue.textContent = quantity;
+
+            const cartItem = cart.find(
+                item => item.id === product.id
+            );
+
+            if (cartItem) {
+                cartItem.quantity = quantity;
+                updateCartCount();
+            }
 
         }
 

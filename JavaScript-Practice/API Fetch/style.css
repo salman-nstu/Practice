@@ -132,14 +132,9 @@ h1 {
     color: #444;
 }
 
-
-
-
-
-
-
 .navbar {
     display: flex;
+    background-color: #444;
     justify-content: center;
     align-items: center;
     gap: 12px;
