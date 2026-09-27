@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+.setup-page {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.setup-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.setup-header h1 {
+    margin-bottom: 5px;
+}
+
+.setup-header p {
+    margin: 0;
+    color: #666;
+}
+
+.setup-section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    margin: 0 0 5px;
+}
+
+.section-header p {
+    margin: 0;
+    color: #666;
+}
+
+.form-group,
+.task-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group input,
+.task-form-group input,
+.task-form-group textarea,
+.task-form-group select {
+    padding: 9px;
+    border: 1px solid #aaa;
+    font: inherit;
+}
+
+.states-container,
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.state-item {
+    display: flex;
+    gap: 5px;
+}
+
+.state-item input {
+    flex: 1;
+    padding: 9px;
+    border: 1px solid #aaa;
+    font: inherit;
+}
+
+.task-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.task-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+button {
+    padding: 9px 15px;
+    border: 1px solid #888;
+    background: #eee;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddd;
+}
+
+.primary-button {
+    background: #222;
+    color: white;
+    border-color: #222;
+}
+
+.primary-button:hover {
+    background: #444;
+}
+
+.remove-button {
+    padding: 7px 12px;
+    color: #b00000;
+}
+
+.empty-message {
+    padding: 15px;
+    color: #777;
+    border: 1px dashed #bbb;
+    text-align: center;
+}
+
+.create-board-section {
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+
+    .setup-page {
+        width: 95%;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .task-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .create-board-section {
+        text-align: left;
+    }
+}

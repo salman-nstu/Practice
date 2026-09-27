@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Board</title>
+
+    <link rel="stylesheet" href="css/setup.css">
+</head>
+
+<body>
+
+    <main class="setup-page">
+
+        <!-- Page Header -->
+        <header class="setup-header">
+
+            <h1>Task Board</h1>
+
+            <p>
+                Create your workflow and build your interactive task board.
+            </p>
+
+        </header>
+
+
+        <!-- Board Setup Form -->
+        <section class="setup-container">
+
+            <!-- Project Information -->
+            <div class="setup-section">
+
+                <h2>Project Information</h2>
+
+                <div class="form-group">
+
+                    <label for="boardName">
+                        Board Name
+                    </label>
+
+                    <input type="text" id="boardName" placeholder="Enter board name">
+
+                </div>
+
+            </div>
+
+
+            <!-- Workflow States -->
+            <div class="setup-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Workflow States</h2>
+
+                        <p>
+                            Define the stages that a task will follow.
+                        </p>
+                    </div>
+
+                    <button type="button" id="addStateBtn" class="secondary-button">
+                        + Add State
+                    </button>
+
+                </div>
+
+
+                <div id="statesContainer" class="states-container">
+
+                    <!-- States will be added here by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- Tasks -->
+            <div class="setup-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Tasks</h2>
+
+                        <p>
+                            Add the tasks that will move through your workflow.
+                        </p>
+                    </div>
+
+                    <button type="button" id="addTaskBtn" class="secondary-button">
+                        + Add Task
+                    </button>
+
+                </div>
+
+
+                <div id="tasksContainer" class="tasks-container">
+
+                    <!-- Tasks will be added here by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- Create Board -->
+            <div class="create-board-section">
+
+                <button type="button" id="createBoardBtn" class="primary-button">
+                    Create Board
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="js/setup.js"></script>
+
+</body>
+
+</html>
