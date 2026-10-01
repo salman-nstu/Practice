@@ -7,11 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.css'
 })
 export class ProductListComponent {
-  a: number = 4;
-  user = {
-    name: "sk",
-    email: "salman@gmail.com",
-    age: 20
-  }
-}
 
+  user = {
+    name: 'Salman Khan',
+    email: 'salman@gmail.com',
+    age: 20
+  };
+
+  products = [
+    { name: 'Laptop', price: 800, inStock: true },
+    { name: 'Smartphone', price: 500, inStock: true },
+    { name: 'Headphones', price: 120, inStock: false },
+    { name: 'Keyboard', price: 85, inStock: true }
+  ];
+}

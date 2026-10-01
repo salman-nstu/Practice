@@ -1,13 +1,17 @@
 <section>
-    <h2>Products</h2>
+  <h2>User Info</h2>
+  <p>Name: {{ user.name }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Age: {{ user.age }}</p>
+</section>
 
-    <div>
-        <h3>Laptop</h3>
-        <p>$800</p>
-    </div>
+<section>
+  <h2>Products</h2>
 
-    <div>
-        <h3>Phone</h3>
-        <p>$500</p>
-    </div>
+  <div *ngFor="let product of products">
+    <h3>{{ product.name }}</h3>
+    <p>Price: ${{ product.price }}</p>
+    <p>Status: {{ product.inStock ? 'In Stock' : 'Out of Stock' }}</p>
+    <hr>
+  </div>
 </section>
