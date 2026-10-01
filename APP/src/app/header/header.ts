@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './header.css'
 })
 export class HeaderComponent {
-
+  pi = Math.PI;
   user = {
     info: "This is a demo site....",
     getinfo() {
@@ -15,3 +15,4 @@ export class HeaderComponent {
     }
   }
 }
+

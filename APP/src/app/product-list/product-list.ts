@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.css'
 })
 export class ProductListComponent {
-
+  productName = "KKKK";
   user = {
     name: 'Salman Khan',
     email: 'salman@gmail.com',
