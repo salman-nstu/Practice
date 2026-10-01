@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
-  standalone: false,   // ← must be false to belong to an NgModule
+  standalone: false,
   templateUrl: './product-list.html',
   styleUrl: './product-list.css'
 })
