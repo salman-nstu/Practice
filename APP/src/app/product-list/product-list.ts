@@ -11,7 +11,7 @@ export class ProductListComponent {
   user = {
     name: 'Salman Khan',
     email: 'salman@gmail.com',
-    age: 20
+    age: 24
   };
 
   products = [

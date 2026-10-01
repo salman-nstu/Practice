@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+
+  user = {
+    info: "This is a demo site....",
+    getinfo() {
+      return `${this.info}`;
+    }
+  }
+}
