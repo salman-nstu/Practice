@@ -8,7 +8,7 @@ import { UserProfileComponent } from '../user-profile/user-profile';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    UserProfileComponent      // ← declared here
+    UserProfileComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +16,7 @@ import { UserProfileComponent } from '../user-profile/user-profile';
   exports: [
     HeaderComponent,
     FooterComponent,
-    UserProfileComponent      // ← exported so app.html can use <app-user-profile>
+    UserProfileComponent
   ]
 })
 export class SharedModule { }

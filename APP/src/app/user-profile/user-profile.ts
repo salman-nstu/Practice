@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile',
-  standalone: false,         // ← owned by SharedModule
+  standalone: false,
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css'
 })
@@ -11,7 +11,7 @@ export class UserProfileComponent {
   username = 'Rahim Ahmed';
   email = 'rahim@example.com';
 
-  avatarUrl = 'https://i.pravatar.cc/100?img=5';  // ← real working URL
+  avatarUrl = 'https://i.pravatar.cc/80?img=12';
 
   isSaving = false;
   isInactive = false;

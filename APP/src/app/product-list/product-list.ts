@@ -15,13 +15,6 @@ export class ProductListComponent {
     age: 24
   };
 
-
-  avatarUrl = 'https://i.pravatar.cc/80?img=12';
-
-  isSaveDisabled = true;
-
-  isInactive = true;
-
   products = [
     { name: 'Laptop', price: 800, inStock: true },
     { name: 'Smartphone', price: 500, inStock: true },
