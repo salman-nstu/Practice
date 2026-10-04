@@ -1,0 +1,26 @@
+<div class="profile-card">
+    <img [src]="avatarUrl" [alt]="username + ' avatar'" [style.width.px]="avatarSize" [style.height.px]="avatarSize"
+        class="avatar">
+
+    <h2 [class.inactive]="isInactive">
+        {{ username }}
+    </h2>
+
+    <p>{{ email }}</p>
+
+    <p [hidden]="!isVerified">
+        Verified account
+    </p>
+
+    <p [attr.aria-label]="'Account status'">
+        Status: {{ isInactive ? 'Inactive' : 'Active' }}
+    </p>
+
+    <button [disabled]="saveDisabled" (click)="saveProfile()">
+        {{ isSaving ? 'Saving...' : 'Save' }}
+    </button>
+
+    <button (click)="toggleStatus()">
+        Toggle status
+    </button>
+</div>

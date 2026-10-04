@@ -1,0 +1,28 @@
+.profile-card {
+    max-width: 320px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.avatar {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.inactive {
+    opacity: 0.5;
+    color: gray;
+}
+
+button {
+    margin: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
