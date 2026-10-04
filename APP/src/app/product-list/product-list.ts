@@ -8,11 +8,19 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
   productName = "KKKK";
+
   user = {
     name: 'Salman Khan',
     email: 'salman@gmail.com',
     age: 24
   };
+
+
+  avatarUrl = 'https://i.pravatar.cc/80?img=12';
+
+  isSaveDisabled = true;
+
+  isInactive = true;
 
   products = [
     { name: 'Laptop', price: 800, inStock: true },

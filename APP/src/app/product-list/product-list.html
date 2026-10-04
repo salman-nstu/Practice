@@ -1,12 +1,29 @@
 <section>
   <h2>User Info</h2>
+
+  <img [src]="avatarUrl" alt="User Avatar" width="80" height="80">
+
   <p>Name: {{ user.name }}</p>
   <p>Email: {{ user.email }}</p>
   <p>Age: {{ user.age }}</p>
 </section>
 
 <section>
-  <h2>{{productName}}</h2>
+  <h2>Account Actions</h2>
+  <button [disabled]="isSaveDisabled">Save Changes</button>
+  <p>( isSaveDisabled = {{ isSaveDisabled }} )</p>
+</section>
+
+<section>
+  <h2>Account Status</h2>
+  <p [class.inactive]="isInactive">
+    Status: {{ isInactive ? 'Inactive' : 'Active' }}
+  </p>
+  <p>( isInactive = {{ isInactive }} )</p>
+</section>
+
+<section>
+  <h2>{{ productName }}</h2>
 
   <div *ngFor="let product of products">
     <h3>{{ product.name }}</h3>
