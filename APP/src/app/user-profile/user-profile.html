@@ -23,4 +23,34 @@
     <button (click)="toggleStatus()">
         Toggle status
     </button>
+    <!-- 
+    <button (click)="showEvent($event)">
+        Click Me
+    </button> -->
+
+
+
+    <div>
+
+        <input type="checkbox" (change)="handleCheckbox($event)">
+
+        <br>
+
+
+
+        <input type="text" placeholder="Type" [disabled]="!isTextboxEnabled">
+
+
+    </div>
+
+
+
+    <p>Count: {{ count }}</p>
+
+    <button (click)="increment()">+</button>
+
+    <button (click)="decrement()">-</button>
+
+    <button (click)="reset()">Reset</button>
+
 </div>
