@@ -17,7 +17,14 @@ export class UserProfileComponent {
   isInactive = false;
   isVerified = true;
 
+
+  role = 'Student';
+
+
   avatarSize = 100;
+
+  bio = 'I am learning Angular.';
+
 
   get saveDisabled(): boolean {
     return this.isSaving || this.isInactive;
@@ -92,5 +99,6 @@ export class UserProfileComponent {
     const checkbox = event.target as HTMLInputElement;
     this.isTextboxEnabled = checkbox.checked;
   }
+
 
 }

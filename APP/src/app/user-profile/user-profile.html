@@ -53,4 +53,34 @@
 
     <button (click)="reset()">Reset</button>
 
+    <input placeholder="Type Something " [(ngModel)]="username">
+
+
+    <!-- <input [ngModel]="name" (ngModelChange)="name = $event"> -->
+
+    <p>Hello, {{ username }}</p>
+
+
+    <textarea [(ngModel)]="bio"></textarea>
+
+    <p>Bio: {{ bio }}</p>
+
+
+    <label>
+        <input type="checkbox" [(ngModel)]="isInactive">
+        I am a student
+    </label>
+
+    <p>Student: {{ isInactive }}</p>
+
+
+
+    <select [(ngModel)]="role">
+        <option value="Student">Student</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Developer">Developer</option>
+    </select>
+
+    <p>Selected role: {{ role }}</p>
+
 </div>

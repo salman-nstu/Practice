@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header';
 import { FooterComponent } from '../footer/footer';
 import { UserProfileComponent } from '../user-profile/user-profile';
@@ -11,7 +12,8 @@ import { UserProfileComponent } from '../user-profile/user-profile';
     UserProfileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
