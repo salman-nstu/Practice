@@ -17,11 +17,11 @@ interface User {
 export class UserListComponent {
 
   users: User[] = [
-    { id: 1, name: 'Rahim',  email: 'rahim@example.com',  role: 'Admin',   status: 'active'   },
-    { id: 2, name: 'Karim',  email: 'karim@example.com',  role: 'Doctor',  status: 'pending'  },
-    { id: 3, name: 'Nadia',  email: 'nadia@example.com',  role: 'Patient', status: 'inactive' },
-    { id: 4, name: 'Sadia',  email: 'sadia@example.com',  role: 'Nurse',   status: 'active'   },
-    { id: 5, name: 'Farhan', email: 'farhan@example.com', role: 'Doctor',  status: 'pending'  },
+    { id: 1, name: 'A', email: 'A@example.com', role: 'Admin', status: 'active' },
+    { id: 2, name: 'B', email: 'B@example.com', role: 'Doctor', status: 'pending' },
+    { id: 3, name: 'C', email: 'C@example.com', role: 'Patient', status: 'inactive' },
+    { id: 4, name: 'D', email: 'D@example.com', role: 'Nurse', status: 'active' },
+    { id: 5, name: 'E', email: 'E@example.com', role: 'Doctor', status: 'pending' },
   ];
 
 }

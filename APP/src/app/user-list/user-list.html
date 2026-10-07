@@ -5,10 +5,12 @@
     <span class="user-count">{{ users.length }} users</span>
   </div>
 
+  <input #val type="text" />
+
+  <p>{{val.value}}</p>
 
 
-
-  @for (user of users; track user.id) {
+  @for (user of users; track user.id; let i = $index, j = $index ) {
 
   <div class="user-card" [class.first-card]="$first" [class.last-card]="$last">
 
@@ -22,6 +24,18 @@
 
     <div class="user-details">
       <span class="role-badge">{{ user.role }}</span>
+
+      @for (user of users; track user.id) {
+      <div>
+        @if(i == 2){
+
+        <span>Hello</span>
+        }
+      </div>
+      }
+
+
+
 
 
 
