@@ -1,9 +1,25 @@
 <app-header></app-header>
 
-<main>
-  <app-user-profile></app-user-profile>
+<main class="page-layout">
 
-  <app-product-list></app-product-list>
+  <!-- Day 6: User Profile (bindings, events, ngModel) -->
+  <section class="panel">
+    <h3 class="panel-label">User Profile</h3>
+    <app-user-profile></app-user-profile>
+  </section>
+
+  <!-- Day 7: User List (@for, @switch, @if, @empty …) -->
+  <section class="panel">
+    <h3 class="panel-label"> User List</h3>
+    <app-user-list></app-user-list>
+  </section>
+
+  <!-- Products (existing work) -->
+  <section class="panel">
+    <h3 class="panel-label">Product List</h3>
+    <app-product-list></app-product-list>
+  </section>
+
 </main>
 
 <app-footer></app-footer>

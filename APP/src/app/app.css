@@ -1,0 +1,29 @@
+/* ── Page layout: panels side by side ─────────── */
+.page-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px;
+  align-items: flex-start;
+}
+
+/* ── Individual panel ─────────────────────────── */
+.panel {
+  flex: 1 1 320px;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.panel-label {
+  margin: 0 0 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+

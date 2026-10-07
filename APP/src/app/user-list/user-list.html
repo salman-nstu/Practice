@@ -1,0 +1,62 @@
+<section class="user-list-section">
+
+  <!-- Header -->
+  <div class="list-header">
+    <h2>User List</h2>
+    <span class="user-count">{{ users.length }} users</span>
+  </div>
+
+  <!-- Table -->
+  @for (user of users; track user.id) {
+
+  <div class="user-card" [class.first-card]="$first" [class.last-card]="$last">
+
+    <div class="user-meta">
+      <span class="user-index">#{{ $index + 1 }}</span>
+      <div class="user-info">
+        <strong>{{ user.name }}</strong>
+        <span class="user-email">{{ user.email }}</span>
+      </div>
+    </div>
+
+    <div class="user-details">
+      <span class="role-badge">{{ user.role }}</span>
+
+      <!-- Status badge via @switch -->
+      @switch (user.status) {
+      @case ('active') {
+      <span class="status active">Active</span>
+      }
+      @case ('pending') {
+      <span class="status pending">Pending</span>
+      }
+      @case ('inactive') {
+      <span class="status inactive">Inactive</span>
+      }
+      @default {
+      <span class="status unknown">Unknown</span>
+      }
+      }
+    </div>
+
+    <!-- First / Last labels -->
+    @if ($first) {
+    <span class="tag">First</span>
+    }
+    @if ($last) {
+    <span class="tag">Last</span>
+    }
+
+  </div>
+
+  } @empty {
+
+  <!-- Empty state -->
+  <div class="empty-state">
+    <p>No users found.</p>
+    <small>Add users to see them listed here.</small>
+  </div>
+
+  }
+
+</section>
