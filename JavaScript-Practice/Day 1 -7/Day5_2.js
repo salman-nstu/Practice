@@ -22,7 +22,7 @@
 
 let nums = [1, 2, 3, 4, 5, 6, 7, 8];
 
-console.log(nums.join(3));
+console.log(nums.join(" "));
 //let results = nums.map(num => num * num);
 //console.log(results);
 
