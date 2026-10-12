@@ -1,0 +1,75 @@
+/* ── Card container ───────────────────────────── */
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+
+.user-card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── User info ────────────────────────────────── */
+.user-info h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.user-info .email {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.role-badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ── Action buttons ───────────────────────────── */
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-select,
+.btn-delete {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-select {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.btn-select:hover {
+  background: #1558b0;
+}
+
+.btn-delete {
+  background: #fce8e6;
+  color: #c62828;
+}
+
+.btn-delete:hover {
+  background: #f5c6c2;
+}

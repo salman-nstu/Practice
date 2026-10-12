@@ -53,10 +53,13 @@
 
     <button (click)="reset()">Reset</button>
 
-    <input placeholder="Type Something " [(ngModel)]="username">
+    <!-- <input placeholder="Type Something " [custom]="username" (customChange)="username = $event"> -->
+    @input
 
 
     <!-- <input [ngModel]="name" (ngModelChange)="name = $event"> -->
+
+
 
     <p>Hello, {{ username }}</p>
 

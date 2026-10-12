@@ -1,81 +1,43 @@
 <section class="user-list-section">
+  <!-- @let pi = 3; -->
 
   <div class="list-header">
     <h2>User List</h2>
+    <!-- @if (pi>3) {
+    <span>Hi</span>
+    } -->
     <span class="user-count">{{ users.length }} users</span>
   </div>
+  @for (user of users; track user.id) {
 
-  <input #val type="text" />
+  <app-user-card [user]="user" (selected)="onUserSelected($event)" (deleteRequested)="onDeleteRequested($event)">
+  </app-user-card>
 
-  <p>{{val.value}}</p>
-
-
-  @for (user of users; track user.id; let i = $index, j = $index ) {
-
-  <div class="user-card" [class.first-card]="$first" [class.last-card]="$last">
-
-    <div class="user-meta">
-      <span class="user-index">#{{ $index + 1 }}</span>
-      <div class="user-info">
-        <strong>{{ user.name }}</strong>
-        <span class="user-email">{{ user.email }}</span>
-      </div>
-    </div>
-
-    <div class="user-details">
-      <span class="role-badge">{{ user.role }}</span>
-
-      @for (user of users; track user.id) {
-      <div>
-        @if(i == 2){
-
-        <span>Hello</span>
-        }
-      </div>
-      }
+  } @empty {
 
 
-
-
-
-
-      @switch (user.status) {
-      @case ('active') {
-      <span class="status active">Active</span>
-      }
-      @case ('pending') {
-      <span class="status pending">Pending</span>
-      }
-      @case ('inactive') {
-      <span class="status inactive">Inactive</span>
-      }
-      @default {
-      <span class="status unknown">Unknown</span>
-      }
-      }
-    </div>
-
-
-
-
-    @if ($first) {
-    <span class="tag">First</span>
-    }
-    @if ($last) {
-    <span class="tag">Last</span>
-    }
-
+  <div class="empty-state">
+    <p>No users available.</p>
+    <small>All users have been deleted.</small>
   </div>
 
   }
 
+  <hr class="divider">
 
-  @empty {
 
-  <div class="empty-state">
-    <p>No users found.</p>
-    <small>Add users to see them listed here.</small>
+  @if (selectedUser) {
+
+  <div class="selected-panel">
+    <h3>Selected User</h3>
+    <p><strong>Name:</strong> {{ selectedUser.name }}</p>
+    <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+    <p><strong>Role:</strong> {{ selectedUser.role }}</p>
   </div>
+
+  } @else {
+
+  <p class="no-selection">No user selected yet.</p>
 
   }
 

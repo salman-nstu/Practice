@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output, EventEmitter, computed } from '@angular/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,6 +24,12 @@ export class UserProfileComponent {
 
   bio = 'I am learning Angular.';
 
+  value = input(0);
+
+  result = computed(() => `value is ${this.value()}`);
+
+
+  // @output() 
 
   get saveDisabled(): boolean {
     return this.isSaving || this.isInactive;
