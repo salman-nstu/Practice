@@ -1,10 +1,72 @@
-<section>
-  <h2>{{ productName }}</h2>
+<section class="inventory" aria-labelledby="inventory-title">
+  <header class="section-heading">
+    <div>
+      <h2 id="inventory-title">Product Inventory</h2>
+      <p>Keep track of your products and stock levels.</p>
+    </div>
+    <span class="product-count">{{ products.length }} products</span>
+  </header>
 
-  <div *ngFor="let product of products">
-    <h3>{{ product.name }}</h3>
-    <p>Price: ${{ product.price }}</p>
-    <p>Status: {{ product.inStock ? 'In Stock' : 'Out of Stock' }}</p>
-    <hr>
+  <div class="product-grid">
+    @for (product of products; track product.id) {
+      <article
+        class="product-card"
+        [ngClass]="{
+          'in-stock': product.stock > 5,
+          'low-stock': product.stock > 0 && product.stock <= 5,
+          'out-of-stock': product.stock === 0,
+        }"
+      >
+        <h3>{{ product.name | titlecase }}</h3>
+        <p class="price">{{ product.price | currency: 'BDT' : 'symbol' : '1.2-2' }}</p>
+        <p class="added-date">Added: {{ product.addedOn | date: 'mediumDate' : 'UTC' }}</p>
+
+        <div class="product-details">
+          <p>
+            Rating: <strong>{{ product.rating | number: '1.1-1' }} / 5</strong>
+          </p>
+          <p>
+            Discount: <strong>{{ product.discount | percent: '1.0-0' }}</strong>
+          </p>
+        </div>
+
+        <div class="stock-row">
+          <p
+            class="stock-label"
+            aria-live="polite"
+            [ngStyle]="{
+              color: product.stock === 0 ? '#dc2626' : product.stock <= 5 ? '#b45309' : '#15803d',
+            }"
+          >
+            {{ getStockStatus(product.stock) }}
+          </p>
+          <p class="stock-count">
+            Available: <strong>{{ product.stock }}</strong> units
+          </p>
+        </div>
+
+        <div class="actions">
+          <button
+            class="button button-secondary"
+            type="button"
+            (click)="decreaseStock(product.id)"
+            [disabled]="product.stock === 0"
+            [attr.aria-label]="'Decrease stock for ' + (product.name | titlecase)"
+          >
+            -1 Stock
+          </button>
+          <button
+            class="button button-primary"
+            type="button"
+            (click)="increaseStock(product.id)"
+            [attr.aria-label]="'Increase stock for ' + (product.name | titlecase)"
+          >
+            +1 Stock
+          </button>
+        </div>
+      </article>
+    } @empty {
+      <p class="empty-state">No products available.</p>
+    }
   </div>
 </section>

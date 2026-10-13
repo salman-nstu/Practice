@@ -1,155 +1,123 @@
-/* ── Container ───────────────────────────────── */
-.user-list-section {
-  max-width: 640px;
-  margin: 0 auto;
-  font-family: sans-serif;
+:host {
+  display: block;
+  min-width: 0;
 }
 
-/* ── Header row ──────────────────────────────── */
+.user-list-section {
+  padding: 24px;
+  border: 1px solid var(--border, #e5e8ef);
+  border-radius: 14px;
+  background: var(--surface, #fff);
+}
+
 .list-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
 .list-header h2 {
   margin: 0;
-  font-size: 1.4rem;
+  color: var(--text, #202938);
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.list-header p {
+  margin: 6px 0 0;
+  color: var(--muted, #697386);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
 .user-count {
-  background: #e8f0fe;
-  color: #1a73e8;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-/* ── User card ───────────────────────────────── */
-.user-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 18px;
-  margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background: #fff;
-  transition: box-shadow 0.2s;
-}
-
-.user-card:hover {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Highlight first & last */
-.first-card { border-left: 4px solid #1a73e8; }
-.last-card  { border-left: 4px solid #e8710a; }
-
-/* ── User meta (index + name/email) ──────────── */
-.user-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.user-index {
+  flex-shrink: 0;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: var(--canvas, #f6f7f9);
+  color: var(--muted, #697386);
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #999;
-  min-width: 28px;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-info strong {
-  font-size: 0.95rem;
-}
-
-.user-email {
-  font-size: 0.78rem;
-  color: #666;
-}
-
-/* ── Right side (role + status) ──────────────── */
-.user-details {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.role-badge {
-  background: #f1f3f4;
-  color: #444;
-  font-size: 0.75rem;
-  padding: 3px 9px;
-  border-radius: 20px;
-}
-
-.status {
-  font-size: 0.78rem;
   font-weight: 600;
 }
 
-/* ── First / Last tag ────────────────────────── */
-.tag {
-  font-size: 0.7rem;
-  color: #888;
-  font-style: italic;
+.user-rows {
+  border-top: 1px solid var(--border, #e5e8ef);
 }
 
-/* ── Empty state ─────────────────────────────── */
 .empty-state {
+  padding: 36px 16px;
   text-align: center;
-  padding: 40px;
-  color: #999;
-  border: 2px dashed #ddd;
-  border-radius: 12px;
 }
 
 .empty-state p {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
+  margin: 0 0 6px;
+  color: var(--text, #202938);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-/* ── Divider ──────────────────────────────────── */
-.divider {
-  border: none;
-  border-top: 1px solid #e0e0e0;
-  margin: 16px 0;
+.empty-state span,
+.no-selection {
+  color: var(--muted, #697386);
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
-/* ── Selected user panel ──────────────────────── */
+.selection-summary {
+  margin-top: 16px;
+}
+
 .selected-panel {
-  background: #f0fdf4;
-  border: 1px solid #86efac;
-  border-radius: 10px;
-  padding: 14px 18px;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--canvas, #f6f7f9);
 }
 
 .selected-panel h3 {
-  margin: 0 0 10px;
-  font-size: 1rem;
-  color: #166534;
+  margin: 0 0 12px;
+  color: var(--text, #202938);
+  font-size: 0.8125rem;
+  font-weight: 600;
 }
 
-.selected-panel p {
-  margin: 4px 0;
-  font-size: 0.88rem;
-  color: #374151;
+.selected-panel dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  font-size: 0.8125rem;
 }
 
-/* ── No-selection hint ────────────────────────── */
+.selected-panel dt {
+  margin-bottom: 4px;
+  color: var(--muted, #697386);
+  font-size: 0.75rem;
+}
+
+.selected-panel dd {
+  margin: 0;
+  color: var(--text, #202938);
+  overflow-wrap: anywhere;
+}
+
 .no-selection {
-  font-size: 0.85rem;
-  color: #9ca3af;
-  text-align: center;
-  padding: 8px 0;
+  margin: 0;
+  padding: 4px 0 0;
+}
+
+@media (max-width: 540px) {
+  .user-list-section {
+    padding: 18px;
+  }
+
+  .list-header {
+    gap: 10px;
+  }
+
+  .selected-panel dl {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,94 +1,119 @@
-<div class="profile-card">
-    <img [src]="avatarUrl" [alt]="username + ' avatar'" [style.width.px]="avatarSize" [style.height.px]="avatarSize"
-        class="avatar">
+﻿<section class="profile-card" aria-labelledby="profile-heading">
+  <div class="section-heading">
+    <h2 id="profile-heading">Profile</h2>
+    <span class="status" [class.status-inactive]="isInactive">
+      <span class="status-dot" aria-hidden="true"></span>
+      {{ isInactive ? 'Inactive' : 'Active' }}
+    </span>
+  </div>
 
-    <h2 [class.inactive]="isInactive">
-        {{ username }}
-    </h2>
-
-    <p>{{ email }}</p>
-
-    <p [hidden]="!isVerified">
-        Verified account
-    </p>
-
-    <p [attr.aria-label]="'Account status'">
-        Status: {{ isInactive ? 'Inactive' : 'Active' }}
-    </p>
-
-    <button [disabled]="saveDisabled" (click)="saveProfile()">
-        {{ isSaving ? 'Saving...' : 'Save' }}
-    </button>
-
-    <button (click)="toggleStatus()">
-        Toggle status
-    </button>
-    <!-- 
-    <button (click)="showEvent($event)">
-        Click Me
-    </button> -->
-
-
-
-    <div>
-
-        <input type="checkbox" (change)="handleCheckbox($event)">
-
-        <br>
-
-
-
-        <input type="text" placeholder="Type" [disabled]="!isTextboxEnabled">
-
-
+  <div class="profile-identity">
+    <span class="avatar" aria-hidden="true">{{ username.charAt(0) }}</span>
+    <div class="identity-details">
+      <div class="identity-name">
+        <h3>{{ username }}</h3>
+        @if (isVerified) {
+          <span class="verified" aria-label="Verified account">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7" fill="currentColor" />
+              <path
+                d="m4.8 8 2 2 4.4-4.4"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Verified
+          </span>
+        }
+      </div>
+      <p>{{ email }}</p>
     </div>
+  </div>
 
-
-
-    <p>Count: {{ count }}</p>
-
-    <button (click)="increment()">+</button>
-
-    <button (click)="decrement()">-</button>
-
-    <button (click)="reset()">Reset</button>
-
-    <!-- <input placeholder="Type Something " [custom]="username" (customChange)="username = $event"> -->
-    @input
-
-
-    <!-- <input [ngModel]="name" (ngModelChange)="name = $event"> -->
-
-
-
-    <p>Hello, {{ username }}</p>
-
-
-    <textarea [(ngModel)]="bio"></textarea>
-
-    <p>Bio: {{ bio }}</p>
-
-
-    <label>
-        <input type="checkbox" [(ngModel)]="isInactive">
-        I am a student
-    </label>
-
-    <p>Student: {{ isInactive }}</p>
-
-
-
-    <select [(ngModel)]="role">
+  <div class="profile-fields">
+    <div class="field">
+      <label for="profile-role">Role</label>
+      <select id="profile-role" [(ngModel)]="role">
         <option value="Student">Student</option>
         <option value="Teacher">Teacher</option>
         <option value="Developer">Developer</option>
-    </select>
+      </select>
+    </div>
 
-    <p>Selected role: {{ role }}</p>
+    <div class="field">
+      <label for="profile-bio">Bio</label>
+      <textarea id="profile-bio" rows="3" [(ngModel)]="bio"></textarea>
+    </div>
+  </div>
 
-    @if (isVerified) {
-    <p>Profile is Verified</p>
-    }
+  <div class="profile-actions">
+    <button
+      type="button"
+      class="button button-primary"
+      [disabled]="saveDisabled"
+      (click)="saveProfile()"
+    >
+      {{ isSaving ? 'Saving...' : 'Save profile' }}
+    </button>
+    <button type="button" class="button button-secondary" (click)="toggleStatus()">
+      {{ isInactive ? 'Set active' : 'Set inactive' }}
+    </button>
+  </div>
 
+  <details class="practice-controls">
+    <summary>Practice controls</summary>
+    <div class="practice-content">
+      <div class="counter">
+        <span class="field-label" id="profile-count-label">Counter</span>
+        <div class="counter-actions" role="group" aria-labelledby="profile-count-label">
+          <button
+            type="button"
+            class="button button-secondary counter-step"
+            (click)="decrement()"
+            aria-label="Decrease count"
+          >
+            −
+          </button>
+          <output class="count" aria-live="polite" aria-label="Current count">{{ count }}</output>
+          <button
+            type="button"
+            class="button button-secondary counter-step"
+            (click)="increment()"
+            aria-label="Increase count"
+          >
+            +
+          </button>
+          <button type="button" class="button button-secondary reset-button" (click)="reset()">
+            Reset
+          </button>
+        </div>
+      </div>
 
-</div>
+      <div class="field">
+        <label class="checkbox-label" for="profile-enable-text">
+          <input
+            id="profile-enable-text"
+            type="checkbox"
+            [checked]="isTextboxEnabled"
+            (change)="handleCheckbox($event)"
+          />
+          Enable text field
+        </label>
+        <label class="text-input-label" for="profile-practice-text">Practice text</label>
+        <input
+          id="profile-practice-text"
+          type="text"
+          placeholder="Type something"
+          [disabled]="!isTextboxEnabled"
+        />
+      </div>
+
+      <label class="checkbox-label" for="profile-inactive">
+        <input id="profile-inactive" type="checkbox" [(ngModel)]="isInactive" />
+        Mark account inactive
+      </label>
+    </div>
+  </details>
+</section>

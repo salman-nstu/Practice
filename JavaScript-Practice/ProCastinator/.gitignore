@@ -22,9 +22,7 @@ coverage/
 Thumbs.db
 
 # Editor / IDE files
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
+.vscode/
 .idea/
 
 # Temporary files

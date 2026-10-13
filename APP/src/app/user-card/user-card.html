@@ -1,18 +1,30 @@
 <div class="user-card">
+  <div class="user-avatar" aria-hidden="true">{{ user.name.charAt(0).toUpperCase() }}</div>
 
   <div class="user-info">
-    <h3>{{ user.name }}</h3>
+    <div class="user-heading">
+      <h3>{{ user.name }}</h3>
+      <span class="role-badge">{{ user.role }}</span>
+    </div>
     <p class="email">{{ user.email }}</p>
-    <span class="role-badge">{{ user.role }}</span>
   </div>
 
   <div class="card-actions">
-    <button type="button" class="btn-select" (click)="selectUser()">
+    <button
+      type="button"
+      class="btn-select"
+      [attr.aria-label]="'Select ' + user.name"
+      (click)="selectUser()"
+    >
       Select
     </button>
-    <button type="button" class="btn-delete" (click)="deleteUser()">
+    <button
+      type="button"
+      class="btn-delete"
+      [attr.aria-label]="'Delete ' + user.name"
+      (click)="deleteUser()"
+    >
       Delete
     </button>
   </div>
-
 </div>

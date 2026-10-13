@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
-import { ProductModule } from './product/product.module';
+import { ProductListComponent } from './product-list/product-list';
 import { UserListComponent } from './user-list/user-list';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserListComponent } from './user-list/user-list';
   standalone: true,
   imports: [
     SharedModule,
-    ProductModule,
+    ProductListComponent,
     UserListComponent
   ],
   templateUrl: './app.html',

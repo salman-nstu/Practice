@@ -1,44 +1,50 @@
-<section class="user-list-section">
-  <!-- @let pi = 3; -->
-
+<section class="user-list-section" aria-labelledby="users-heading">
   <div class="list-header">
-    <h2>User List</h2>
-    <!-- @if (pi>3) {
-    <span>Hi</span>
-    } -->
-    <span class="user-count">{{ users.length }} users</span>
-  </div>
-  @for (user of users; track user.id) {
-
-  <app-user-card [user]="user" (selected)="onUserSelected($event)" (deleteRequested)="onDeleteRequested($event)">
-  </app-user-card>
-
-  } @empty {
-
-
-  <div class="empty-state">
-    <p>No users available.</p>
-    <small>All users have been deleted.</small>
+    <div>
+      <h2 id="users-heading">Users</h2>
+      <p>View and manage your team.</p>
+    </div>
+    <span class="user-count">{{ users.length }} total</span>
   </div>
 
-  }
-
-  <hr class="divider">
-
-
-  @if (selectedUser) {
-
-  <div class="selected-panel">
-    <h3>Selected User</h3>
-    <p><strong>Name:</strong> {{ selectedUser.name }}</p>
-    <p><strong>Email:</strong> {{ selectedUser.email }}</p>
-    <p><strong>Role:</strong> {{ selectedUser.role }}</p>
+  <div class="user-rows" role="list" aria-label="Team members">
+    @for (user of users; track user.id) {
+      <app-user-card
+        role="listitem"
+        [class.is-selected]="selectedUser?.id === user.id"
+        [user]="user"
+        (selected)="onUserSelected($event)"
+        (deleteRequested)="onDeleteRequested($event)"
+      />
+    } @empty {
+      <div class="empty-state">
+        <p>No users available.</p>
+        <span>Your team list is empty.</span>
+      </div>
+    }
   </div>
 
-  } @else {
-
-  <p class="no-selection">No user selected yet.</p>
-
-  }
-
+  <div class="selection-summary" aria-live="polite">
+    @if (selectedUser) {
+      <div class="selected-panel">
+        <h3>Selected user</h3>
+        <dl>
+          <div>
+            <dt>Name</dt>
+            <dd>{{ selectedUser.name }}</dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>{{ selectedUser.email }}</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>{{ selectedUser.role }}</dd>
+          </div>
+        </dl>
+      </div>
+    } @else {
+      <p class="no-selection">Select a user to see their details.</p>
+    }
+  </div>
 </section>

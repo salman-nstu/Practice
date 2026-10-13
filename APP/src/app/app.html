@@ -1,22 +1,19 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
 <app-header></app-header>
 
-<main class="page-layout">
+<main id="main-content" class="page-layout">
+  <header class="page-heading" id="overview">
+    <p class="eyebrow">Your workspace</p>
+    <h1>Store overview</h1>
+    <p>Manage your inventory, people, and profile in one place.</p>
+  </header>
 
-  <section class="panel">
-    <h3 class="panel-label">User Profile</h3>
-    <app-user-profile></app-user-profile>
-  </section>
+  <app-product-list id="inventory"></app-product-list>
 
-  <section class="panel">
-    <h3 class="panel-label">User List</h3>
-    <app-user-list></app-user-list>
-  </section>
-
-  <section class="panel">
-    <h3 class="panel-label">Product List</h3>
-    <app-product-list></app-product-list>
-  </section>
-
+  <div class="workspace-grid">
+    <app-user-list id="users"></app-user-list>
+    <app-user-profile id="profile"></app-user-profile>
+  </div>
 </main>
 
 <app-footer></app-footer>

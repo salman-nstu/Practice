@@ -1,10 +1,12 @@
 node_modules/
 dist/
 build/
+.angular/
 .env
 .env.*
 !.env.example
 
+# Keep local editor settings out of every project.
 .vscode/
 .idea/
 

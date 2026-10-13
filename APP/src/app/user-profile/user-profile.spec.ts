@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserProfileComponent } from './user-profile';
+import { SharedModule } from '../shared/shared.module';
 
 describe('UserProfile', () => {
   let component: UserProfileComponent;
@@ -7,7 +8,7 @@ describe('UserProfile', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserProfileComponent],
+      imports: [SharedModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserProfileComponent);
