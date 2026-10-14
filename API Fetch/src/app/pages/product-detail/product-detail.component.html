@@ -1,0 +1,31 @@
+<a class="button" routerLink="/products" queryParamsHandling="preserve">&larr; Back to Products</a>
+@if (loading()) {
+  <p class="status" role="status">Loading details...</p>
+} @else if (error()) {
+  <div class="status" role="alert">
+    <p>{{ error() }}</p>
+    <button type="button" (click)="retry()">Try again</button>
+  </div>
+} @else if (product(); as item) {
+  <article class="detail-wrapper">
+    <img [src]="item.thumbnail" [alt]="item.title" class="detail-main-img" width="400" height="300">
+    <div class="detail-info">
+      <h1>{{ item.title }}</h1>
+      <p><strong>Brand:</strong> {{ item.brand || 'N/A' }}</p>
+      <p><strong>Category:</strong> {{ item.category }}</p>
+      <p class="price"><strong>Price:</strong> {{ item.price | currency:'USD' }}</p>
+      <p><strong>Rating:</strong> {{ item.rating }} / 5</p>
+      <p><strong>Stock:</strong> {{ item.stock }} items left</p>
+      <p class="description">{{ item.description }}</p>
+      <div class="quantity-control" aria-label="Product quantity">
+        <button type="button" aria-label="Decrease quantity" [disabled]="quantity() <= 1" (click)="changeQuantity(-1)">&minus;</button>
+        <span aria-live="polite">{{ quantity() }}</span>
+        <button type="button" aria-label="Increase quantity" [disabled]="quantity() >= item.stock" (click)="changeQuantity(1)">+</button>
+      </div>
+      <button class="add-to-cart" type="button" [disabled]="item.stock < 1" (click)="addToCart()">
+        {{ item.stock > 0 ? 'Add to Cart' : 'Out of stock' }}
+      </button>
+      <p role="status">{{ message() }}</p>
+    </div>
+  </article>
+}

@@ -1,0 +1,41 @@
+<section class="cart-screen">
+  <h1>Cart</h1>
+  @for (item of cart.items(); track item.id) {
+    <article class="cart-item">
+      <img [src]="item.thumbnail" [alt]="item.title" width="120" height="120">
+      <div>
+        <h2><a [routerLink]="['/products', item.id]">{{ item.title }}</a></h2>
+        <p>Price: {{ item.price | currency:'USD' }}</p>
+        <div class="quantity-control">
+          <button type="button" [attr.aria-label]="'Decrease quantity of ' + item.title" (click)="cart.changeQuantity(item.id, -1)">&minus;</button>
+          <span aria-live="polite">{{ item.quantity }}</span>
+          <button type="button" [attr.aria-label]="'Increase quantity of ' + item.title" [disabled]="item.quantity >= item.stock" (click)="cart.changeQuantity(item.id, 1)">+</button>
+        </div>
+        <p>Total: {{ item.price * item.quantity | currency:'USD' }}</p>
+        <button type="button" [attr.aria-label]="'Remove ' + item.title" (click)="cart.remove(item.id)">Remove</button>
+      </div>
+    </article>
+  } @empty {
+    <p>Your cart is empty.</p>
+    <a routerLink="/products">Browse products</a>
+  }
+  <div class="cart-summary">
+    <p aria-live="polite"><strong>Total: {{ cart.totalPrice() | currency:'USD' }}</strong></p>
+    <button type="button" [disabled]="cart.items().length === 0" (click)="confirmOrder()">Confirm Order</button>
+    <p class="hint">Print your order summary or save it as a PDF. This demo does not place an order or process payment.</p>
+  </div>
+</section>
+
+<section class="order-receipt">
+  <h1>Order Confirmation</h1>
+  <p><strong>Date:</strong> {{ orderDate() | date:'medium' }}</p>
+  <table>
+    <thead><tr><th scope="col">SL</th><th scope="col">Product Name</th><th scope="col">Price</th><th scope="col">Quantity</th><th scope="col">Total</th></tr></thead>
+    <tbody>
+      @for (item of cart.items(); track item.id; let index = $index) {
+        <tr><td>{{ index + 1 }}</td><td>{{ item.title }}</td><td>{{ item.price | currency:'USD' }}</td><td>{{ item.quantity }}</td><td>{{ item.price * item.quantity | currency:'USD' }}</td></tr>
+      }
+    </tbody>
+  </table>
+  <p class="receipt-total">Total Price: {{ cart.totalPrice() | currency:'USD' }}</p>
+</section>

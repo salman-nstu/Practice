@@ -1,0 +1,8 @@
+.detail-wrapper { display: flex; align-items: start; gap: 40px; margin-top: 24px; }
+.detail-main-img { width: 40%; max-width: 400px; height: 300px; object-fit: contain; border: 1px solid #ddd; border-radius: 6px; }
+.detail-info { flex: 1; min-width: 0; }
+h1 { margin-top: 0; font-size: 26px; }
+.price { font-size: 20px; }
+.description { margin-top: 20px; line-height: 1.6; color: #444; }
+.add-to-cart { margin-top: 16px; }
+@media (max-width: 700px) { .detail-wrapper { flex-direction: column; gap: 24px; } .detail-main-img { width: 100%; } }
