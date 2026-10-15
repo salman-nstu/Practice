@@ -1,0 +1,10 @@
+﻿<label>
+  <span>{{ config.label }}</span>
+  <input
+    [type]="config.type"
+    [placeholder]="config.placeholder"
+    [value]="config.value"
+    (input)="onInput($event)"
+  >
+</label>
+

@@ -1,0 +1,15 @@
+﻿:host { display: block; }
+label { display: grid; gap: 8px; }
+input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #aab2bd;
+  border-radius: 4px;
+  background: #fff;
+  color: #202632;
+  font: inherit;
+}
+input:focus-visible { outline: 2px solid #315ec9; outline-offset: 2px; }
+

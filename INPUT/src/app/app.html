@@ -1,0 +1,23 @@
+﻿<main>
+  <h1>Input</h1>
+
+  <section aria-labelledby="configuration-heading">
+    <h2 id="configuration-heading">Parent </h2>
+    <label for="input-type">type</label>
+    <select id="input-type" [ngModel]="superInput.type" (ngModelChange)="changeType($event)">
+      @for (type of inputTypes; track type) {
+      <option [value]="type">{{ type }}</option>
+      }
+    </select>
+  </section>
+
+  <section aria-labelledby="preview-heading">
+    <h2 id="preview-heading"> input</h2>
+    <app-super-input [config]="superInput" (valueChange)="onValueChange($event)" />
+  </section>
+
+  <section aria-labelledby="value-heading">
+    <h2 id="value-heading">Latest value</h2>
+    <output>{{ superInput.value || '(empty)' }}</output>
+  </section>
+</main>
