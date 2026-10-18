@@ -1,0 +1,25 @@
+<section aria-labelledby="users-heading">
+  <h2 id="users-heading">Users</h2>
+
+  <div class="user-list">
+    @for (user of users; track user.id) {
+      <app-user-card
+        [user]="user"
+        (selected)="onUserSelected($event)">
+      </app-user-card>
+    } @empty {
+      <p>No users found.</p>
+    }
+  </div>
+
+  <div aria-live="polite" aria-atomic="true">
+    @if (selectedUser) {
+      <section class="selected-user" aria-labelledby="selected-heading">
+        <h2 id="selected-heading">Selected user</h2>
+        <p><strong>Name:</strong> {{ selectedUser.name }}</p>
+        <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+        <p><strong>Role:</strong> {{ selectedUser.role }}</p>
+      </section>
+    }
+  </div>
+</section>

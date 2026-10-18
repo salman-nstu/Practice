@@ -1,0 +1,27 @@
+h2 {
+  margin: 0 0 14px;
+  font-size: 18px;
+}
+
+.user-list {
+  display: grid;
+  gap: 12px;
+}
+
+.selected-user {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+  overflow-wrap: anywhere;
+}
+
+.selected-user h2 {
+  margin-bottom: 12px;
+}
+
+.selected-user p {
+  margin: 6px 0;
+  font-size: 14px;
+}

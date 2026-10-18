@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.user-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.email {
+  margin-top: 6px;
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+button {
+  margin-top: 4px;
+  min-height: 44px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}

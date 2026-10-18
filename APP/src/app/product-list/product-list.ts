@@ -81,4 +81,8 @@ export class ProductListComponent {
       product.id === id ? { ...product, stock: Math.max(0, product.stock - 1) } : product
     );
   }
+
+  length(arr: []): number {
+    return arr.length
+  }
 }
