@@ -22,7 +22,9 @@ interface RegistrationData {
 })
 export class RegistrationComponent {
   user: RegistrationData = this.createEmptyUser();
+  numbers: number = 0;
   submitted = false;
+
 
   private createEmptyUser(): RegistrationData {
     return {
@@ -46,7 +48,8 @@ export class RegistrationComponent {
 
   resetRegistration(form: NgForm): void {
     this.user = this.createEmptyUser();
-    form.resetForm(this.user);
+    this.numbers = 0;
+    form.resetForm({ ...this.user, numberCount: 0 });
     this.submitted = false;
   }
 }
