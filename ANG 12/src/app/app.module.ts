@@ -8,4 +8,4 @@ import { UsersModule } from './users/users.module';
   imports: [BrowserModule, UsersModule],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
