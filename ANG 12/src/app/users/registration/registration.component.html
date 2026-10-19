@@ -1,0 +1,136 @@
+<section class="registration-container" aria-labelledby="registration-title">
+  <header>
+    <h1 id="registration-title">Create an account</h1>
+    <p>Enter your details to register. All fields are required.</p>
+  </header>
+
+  @if (submitted) {
+  <p class="success" role="status">Demo submitted. Your details were logged to the console and the form was reset.</p>
+  }
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="form-field">
+      <label for="name">Full name</label>
+      <input id="name" name="name" type="text" autocomplete="name" [(ngModel)]="user.name" #name="ngModel" required
+        minlength="3" maxlength="50" [attr.aria-invalid]="name.invalid && (name.touched || name.dirty)"
+        aria-describedby="name-error">
+      <div id="name-error" class="error">
+        @if (name.invalid && (name.touched || name.dirty)) {
+        @if (name.errors?.['required']) { <p>Name is required.</p> }
+        @if (name.errors?.['minlength']) { <p>Name must have at least 3 characters.</p> }
+        }
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" [(ngModel)]="user.email" #email="ngModel"
+        required email [attr.aria-invalid]="email.invalid && (email.touched || email.dirty)"
+        aria-describedby="email-error">
+      <div id="email-error" class="error">
+        @if (email.invalid && (email.touched || email.dirty)) {
+        @if (email.errors?.['required']) { <p>Email is required.</p> }
+        @if (email.errors?.['email']) { <p>Enter a valid email address.</p> }
+        }
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="new-password" [(ngModel)]="user.password"
+        #password="ngModel" required minlength="8" maxlength="30"
+        [attr.aria-invalid]="password.invalid && (password.touched || password.dirty)"
+        aria-describedby="password-hint password-error">
+      <p id="password-hint" class="hint">Use 8–30 characters.</p>
+      <div id="password-error" class="error">
+        @if (password.invalid && (password.touched || password.dirty)) {
+        @if (password.errors?.['required']) { <p>Password is required.</p> }
+        @if (password.errors?.['minlength']) { <p>Password must have at least 8 characters.</p> }
+        }
+      </div>
+    </div>
+
+    <fieldset class="form-field role-section" aria-describedby="role-error">
+      <legend>Choose your role</legend>
+      <div class="choices">
+        <label class="choice">
+          <input type="radio" name="role" value="student" [(ngModel)]="user.role" #role="ngModel" required>
+          Student
+        </label>
+        <label class="choice">
+          <input type="radio" name="role" value="teacher" [(ngModel)]="user.role" required>
+          Teacher
+        </label>
+      </div>
+      <div id="role-error" class="error">
+        @if (role.invalid && role.touched) {
+        <p>Please select a role.</p>
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="address-section" ngModelGroup="address" #addressGroup="ngModelGroup">
+      <legend>Address details</legend>
+      <div class="form-field">
+        <label for="street">Street</label>
+        <input id="street" name="street" type="text" autocomplete="street-address" [(ngModel)]="user.address.street"
+          #street="ngModel" required [attr.aria-invalid]="street.invalid && (street.touched || street.dirty)"
+          aria-describedby="street-error">
+        <div id="street-error" class="error">
+          @if (street.invalid && (street.touched || street.dirty)) { <p>Street is required.</p> }
+        </div>
+      </div>
+      <div class="address-row">
+        <div class="form-field">
+          <label for="city">City</label>
+          <input id="city" name="city" type="text" autocomplete="address-level2" [(ngModel)]="user.address.city"
+            #city="ngModel" required [attr.aria-invalid]="city.invalid && (city.touched || city.dirty)"
+            aria-describedby="city-error">
+          <div id="city-error" class="error">
+            @if (city.invalid && (city.touched || city.dirty)) { <p>City is required.</p> }
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="postalCode">Postal code</label>
+          <input id="postalCode" name="postalCode" type="text" inputmode="numeric" autocomplete="postal-code"
+            [(ngModel)]="user.address.postalCode" #postalCode="ngModel" required pattern="[0-9]{4}"
+            [attr.aria-invalid]="postalCode.invalid && (postalCode.touched || postalCode.dirty)"
+            aria-describedby="postal-hint postal-error">
+          <p id="postal-hint" class="hint">Exactly 4 digits.</p>
+          <div id="postal-error" class="error">
+            @if (postalCode.invalid && (postalCode.touched || postalCode.dirty)) {
+            @if (postalCode.errors?.['required']) { <p>Postal code is required.</p> }
+            @if (postalCode.errors?.['pattern']) { <p>Postal code must contain exactly 4 digits.</p> }
+            }
+          </div>
+        </div>
+      </div>
+      @if (addressGroup.invalid && addressGroup.touched) {
+      <p class="group-hint">Please complete all required address fields.</p>
+      }
+    </fieldset>
+
+    <div class="form-field">
+      <label class="choice">
+        <input name="terms" type="checkbox" [(ngModel)]="user.terms" #terms="ngModel" required
+          [attr.aria-invalid]="terms.invalid && terms.touched" aria-describedby="terms-error">
+        I agree to the terms and conditions
+      </label>
+      <div id="terms-error" class="error">
+        @if (terms.invalid && terms.touched) { <p>You must accept the terms.</p> }
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="form.invalid || form.pending">Register</button>
+      <button type="button" class="secondary" (click)="resetRegistration(form)">Reset</button>
+      <button type="button" class="text-button" (click)="form.form.markAllAsTouched()">Show errors</button>
+    </div>
+  </form>
+
+  <details class="preview">
+    <summary>Current form value (live preview)</summary>
+    <p class="hint">Practice only. Use sample data; values are shown here and logged on submit.</p>
+    <pre>{{ user | json }}</pre>
+  </details>
+</section>
